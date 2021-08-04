@@ -29,4 +29,54 @@ class PhotosController < ApplicationController
     redirect_to("/photos")
     
   end
+
+  def create
+    input_image = params.fetch("input_image")
+
+    input_caption = params.fetch("input_caption")
+
+    input_owner_id = params.fetch("input_owner_id")
+
+    new_photo = Photo.new 
+    new_photo.image = input_image
+    new_photo.caption = input_caption
+    new_photo.owner_id = input_owner_id
+
+    new_photo.save
+
+    redirect_to("/photos/" + new_photo.id.to_s)
+  end
+
+  
+  def create_comment
+    input_image_id = params.fetch("input_image_id")
+
+    input_author_id = params.fetch("input_auhtor_id")
+
+    input_caption = params.fetch("input_comment")
+
+    new_comment = Comment.new 
+    new_comment.id = input_image
+    new_comment.caption = input_caption
+    new_comment.owner_id = input_owner_id
+
+    new_comment.save
+
+    redirect_to("/photos")
+  end
+
+  def update
+    image_id = params.fetch("path_id")
+    input_image = params.fetch("input_image")
+    input_caption = params.fetch("input_caption")
+
+    update_photo = Photo.where({:id => image_id}).first
+
+    update_photo.image = input_image
+    update_photo.caption = input_caption
+
+    update_photo.save
+
+    redirect_to("/photos/" + update_photo.id.to_s)
+  end
 end
