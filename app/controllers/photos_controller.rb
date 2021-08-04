@@ -70,7 +70,7 @@ class PhotosController < ApplicationController
     input_image = params.fetch("input_image")
     input_caption = params.fetch("input_caption")
 
-    update_photo = Photo.where({:id => image_id}).first
+    update_photo = Photo.where({:id => image_id})
 
     update_photo.image = input_image
     update_photo.caption = input_caption
