@@ -17,4 +17,7 @@ class UsersController < ApplicationController
     render({:template => "user_templates/show.html.erb"})
   end
 
+  def homepage
+    redirect_to("/users")
+  end
 end
