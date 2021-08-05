@@ -29,6 +29,17 @@ class UsersController < ApplicationController
     redirect_to("/users/" + input_username)
   end
 
+  def update
+    input_username = params.fetch("input_username")
+    user_id = params.fetch("path_id")
+    user = User.where({:id => user_id}).first
+    user.username = input_username
+
+    user.save
+
+    redirect_to("/users/" + input_username)
+  end
+
   def homepage
     redirect_to("/users")
   end

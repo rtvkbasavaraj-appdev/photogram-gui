@@ -18,5 +18,7 @@ Rails.application.routes.draw do
 
   get("/insert_comment_record", :controller => "photos", :action => "create_comment")
 
+  get("/update_user/:path_id", {:controller => "users", :action => "update"})
+
   get("/update_photo/:path_id", {:controller => "photos", :action => "update"})
 end
